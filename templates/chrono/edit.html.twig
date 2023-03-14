@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Chrono{% endblock %}
+
+{% block body %}
+    <h1>Edit Chrono</h1>
+
+    {{ include('chrono/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_chrono_index') }}">back to list</a>
+
+    {{ include('chrono/_delete_form.html.twig') }}
+{% endblock %}

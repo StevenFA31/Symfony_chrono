@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chrono index
+{% endblock %}
+
+{% block body %}
+	<h1>Chrono index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>StartTime</th>
+				<th>EndTime</th>
+				<th>Duration</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for chrono in chronos %}
+				<tr>
+					<td>{{ chrono.id }}</td>
+					<td>{{ chrono.startTime ? chrono.startTime|date('H:i:s') : '' }}</td>
+					<td>{{ chrono.endTime ? chrono.endTime|date('H:i:s') : '' }}</td>
+					<td>{{ chrono.duration ? chrono.duration|date('H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_chrono_show', {'id': chrono.id}) }}">show</a>
+						<a href="{{ path('app_chrono_edit', {'id': chrono.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_chrono_new') }}">Create new</a>
+	<p class="mt-3" id="cpt"></p>
+	<button type="button" class="btn btn-primary" id="chrono">start</button>
+
+	<script src="/app.js"></script>
+{% endblock %}

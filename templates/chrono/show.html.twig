@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chrono{% endblock %}
+
+{% block body %}
+    <h1>Chrono</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chrono.id }}</td>
+            </tr>
+            <tr>
+                <th>StartTime</th>
+                <td>{{ chrono.startTime ? chrono.startTime|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EndTime</th>
+                <td>{{ chrono.endTime ? chrono.endTime|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ chrono.duration ? chrono.duration|date('H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chrono_index') }}">back to list</a>
+
+    <a href="{{ path('app_chrono_edit', {'id': chrono.id}) }}">edit</a>
+
+    {{ include('chrono/_delete_form.html.twig') }}
+{% endblock %}

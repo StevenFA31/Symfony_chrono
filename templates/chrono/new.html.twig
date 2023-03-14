@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Chrono{% endblock %}
+
+{% block body %}
+    <h1>Create new Chrono</h1>
+
+    {{ include('chrono/_form.html.twig') }}
+
+    <a href="{{ path('app_chrono_index') }}">back to list</a>
+{% endblock %}
